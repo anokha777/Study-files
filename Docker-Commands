@@ -1,0 +1,141 @@
+docker --version
+docker version
+docker-compose --version
+docker-machine --version
+docker
+
+# To install docker command completion on tab
+1. Install Homebrew
+2. run - brew install bash-completion
+3. run - 
+etc=/Applications/Docker.app/Contents/Resources/etc
+ln -s $etc/docker.bash-completion $(brew --prefix)/etc/bash_completion.d/docker
+ln -s $etc/docker-machine.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-machine
+ln -s $etc/docker-compose.bash-completion $(brew --prefix)/etc/bash_completion.d/docker-compose
+
+docker info
+docker container run --publish 80:80 nginx (to run container for nginx image (80:80 => hostPort:containerPort))
+docker container run --publish 80:80 --detach nginx (to run in daemon mode - it does same as in above command)
+docker container ls (to list all running containers (old way- docker ps))
+docker container stop f7954a405621 (to stop container by it's id)
+docker container start 6861f7037c37 (to start container by it's id)
+docker container ls -a (to list all running/stopped containers (old way- docker ps -a))
+
+**************************run vs start************************************
+docker container run (it always start a new container)
+docker container start (it starts stopped container)
+**************************************************************************
+
+docker container run --publish 80:80 --detach --name anokhaweb nginx (to run container for nginx image with container name anokhaweb)
+# now go to browse and access localhost
+docker container logs anokhaweb (to see the log of container by name (here anokhaweb is container name))
+docker container top anokhaweb (to display the running process on container (here anokhaweb is container name))
+docker container --help (to list down the available commands for container)
+docker container rm eda8fd1f70c2 f7954a405621 (to remove the container/containers by its id (before deleting, stop the containers or use below command))
+docker container rm -f eda8fd1f70c2 (to remove running container by its id)
+ps aux (to see all running process)
+
+********************* What is going on running container *************
+docker container top (to list running process in running container)
+docker container inspect (to see details of a container config)
+docker container stats (to see performance stats for all containers)
+# Try below scenario
+docker container run -d --name anokha-nginx nginx (to create and start new container for nginx image)
+docker container ps
+docker container top anokha-nginx (to see running process)
+docker container top anokha-mysql (to see running process)
+docker container inspect anokha-mysql (to see container config metadata)
+docker container inspect anokha-nginx (to see container config metadata)
+docker container stats --help (to get 'stats' command help)
+docker container stats (to see the container stats- cpu usages etc.) (to exit- control+c)
+**********************************************************************
+
+*********************** Getting a shell inside a container (Or go into a running container) **************
+docker container run -it (to start new container interactively)
+docker container exec -it (to run additional command in existing container)
+
+docker container run -it --name my-nginx nginx bash (to get command prompt in container)
+# Now we are inside we run commands or do config file change etc.
+ls -al
+# to get out of the shell - exit + hit Enter
+docker container ls
+docker container ls -a (see COMMAN COLUMN - the default command is bash)
+
+# try above for ubuntu image container
+docker container run -it --name my-ubuntu ubuntu (after running this, we will land to ubuntu shell. We do not require to provide additional command to land up into ubuntu shell, since ubuntu has bash as default command)
+apt-get update (This is ubuntu command now we can run)
+apt-get install -y curl (This is ubuntu command to install curl)
+curl google.com (send request to google.com, to exit - exit + hit Enter)
+
+docker container start -ai my-ubuntu (to restart container and bash into it)
+# Once we exit from bash container gets stop
+
+# How can we bash into a running container and comeout without stopping it?
+docker container exec -it anokha-mysql bash (to bash into a running container, now we are in mysql container. We can do some admin config etc)
+exit + Enter
+docker container ls (mysql container still running)
+**********************************************************************************************************
+
+*********************** Working with alpine image ********************************************************
+docker pull alpine (to pull alpine image, very less in size)
+docker image ls
+docker container run -it alpine bash (try to bash into alpine container by running this command. -- it will throw error. This prooves, we can only run into container which is present into it's image. So bash is not present in alpine)
+docker container run -it alpine sh (to get into sh for alpine image container)
+**********************************************************************************************************
+
+***************************************** Docker Network *************************************************
+docker container run -p 80:80 --name my-webhost -d nginx (to create and start nginx container)
+docker container port my-webhost (to see, on which port nginx is running in container)
+docker container inspect --format '{{ .NetworkSettings.IPAddress }}' my-webhost (To check what is the IP of running nginx in container)
+ifconfig en0 (to check host ip - (for mac system) )
+
+docker network ls (to list network)
+docker network inspect bridge (to see which all containers are attached with this (bridge) network)
+docker network create my_app_network (to create a new network)
+
+docker container run -d --name new_nginx --network my_app_network nginx (to craete new container for nginx image and attach to a network)
+docker network inspect my_app_network (to see new_nginx container is attached to my_app_network network)
+docker network connect b7c40251774f 7hbjgyb8988 (docker network connect <network-id> <container-id or container-name>) -> (to connect a existing container to new network)
+docker container inspect anokha-nginx (to see how many network attached to this (anokha-nginx) container)
+docker network disconnect b7c40251774f anokha-nginx (docker network disconnect <network-id> <container-id or container-name>) -> (to disconnect a existing container from a network)
+docker container inspect anokha-nginx (to see how many network attached to this (anokha-nginx) container)
+**********************************************************************************************************
+
+********************************** DNS *******************************************************************
+docker network connect my_app_network anokha-nginx (to connect anokha-nginx container to my_app_network network)
+# Now my_app_network network is connected with two containers 1. anokha-nginx 2. new_nginx
+docker container exec -it new_nginx ping anokha-nginx (to ping from one container to another) -> ping is not available in nginx:latest, so use nginx:alpine image
+**********************************************************************************************************
+
+
+********************************************** Images ****************************************************
+docker images (to list down the images)
+docker image ls (to list down the images as above)
+docker pull nginx (to pull image from image registry- hub.docker.com)
+docker pull nginx:1.11.9 (to pull image from image registry by image versions)
+docker history nginx:latest (to check image layer update/change timeline)
+docker image inspect nginx (to see json metadata about image)
+
+docker image tag SOURCE_IMAGE[:TAG] TARGET_IMAGE[:TAG] (to assign one or more tag to an image)
+docker image tag nginx:latest anokhadocker/nginx:1 (to assign a tag to image)
+docker image ls (to list down the Images)
+docker login
+docker image push anokhadocker/nginx (push/publish image on docker registry)
+
+docker image build -t nginx-with-html . (build image in current directory (using Docker file))
+docker image ls (to listdown the images)
+docker container run -p 80:80 --rm nginx-with-html (to run the above built image)
+docker image tag nginx-with-html:latest anokhadocker/nginx-with-html:1.0.0 (to assign a tag to image)
+docker image ls
+docker image push anokhadocker/nginx-with-html (push/publish image on docker registry)
+**********************************************************************************************************
+
+*************************************** Volumes and Mounts ***********************************************
+docker pull mysql (pull mysql image)
+docker image inspect mysql (to see volumn in json output)
+docker container run -d --name mysql-container -e MYSQL_ALLOW_EMPTY_PASSWORD=True  mysql (to start mysql container)
+docker container ls
+docker volume ls (to listdown all volumes)
+docker volume inspect 1ca4fb839e63dd37b852721518e675b0ea8e1427d261599a4290d5bf5fb7b65c (to inspect volume by id)
+
+**********************************************************************************************************
