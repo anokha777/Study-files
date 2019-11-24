@@ -139,3 +139,12 @@ docker volume ls (to listdown all volumes)
 docker volume inspect 1ca4fb839e63dd37b852721518e675b0ea8e1427d261599a4290d5bf5fb7b65c (to inspect volume by id)
 
 **********************************************************************************************************
+*********************************Push image to docker repository******************************************
+1. sudo docker login
+2. sudo docker build -t image-name:0.1 .
+3. sudo docker images
+4. sudo docker tag image-name:0.1 docker-userid/image-name:0.1
+5. sudo docker push docker-userid/image-name:0.1
+**********************************************************************************************************
+
+
