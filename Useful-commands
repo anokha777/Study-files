@@ -1,0 +1,5 @@
+# to copy ec2 files to local
+scp -i system-test.pem -r ec2-user@18.206.174.30:/home/ec2-user/.ssh ./ec2-content/
+
+# ssh to master node of kubernetes
+ssh -i ~/.ssh/id_rsa admin@<master ip>
