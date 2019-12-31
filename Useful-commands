@@ -3,3 +3,6 @@ scp -i system-test.pem -r ec2-user@18.206.174.30:/home/ec2-user/.ssh ./ec2-conte
 
 # ssh to master node of kubernetes
 ssh -i ~/.ssh/id_rsa admin@<master ip>
+
+# to tight protect file - permission
+chmod 400 ec2-content/.ssh/id_rsa
