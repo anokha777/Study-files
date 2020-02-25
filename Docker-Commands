@@ -147,4 +147,13 @@ docker volume inspect 1ca4fb839e63dd37b852721518e675b0ea8e1427d261599a4290d5bf5f
 5. sudo docker push docker-userid/image-name:0.1
 **********************************************************************************************************
 
+*******************************Install docker-compose on on Amazon Linux AMI******************************
+sudo yum update
+sudo yum install -y docker
+sudo usermod -a -G docker ec2-user
+sudo curl -L https://github.com/docker/compose/releases/download/1.21.0/docker-compose-`uname -s`-`uname -m` | sudo tee /usr/local/bin/docker-compose > /dev/null
+sudo chmod +x /usr/local/bin/docker-compose
+sudo service docker start
+sudo chkconfig docker on
+***********************************************************************************************************
 
