@@ -6,3 +6,6 @@ ssh -i ~/.ssh/id_rsa admin@<master ip>
 
 # to tight protect file - permission
 chmod 400 ec2-content/.ssh/id_rsa
+
+# UNPROTECTED PRIVATE KEY FILE issue
+sudo chmod 600 documents/nlp.pem 
