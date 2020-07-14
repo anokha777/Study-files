@@ -157,3 +157,38 @@ sudo service docker start
 sudo chkconfig docker on
 ***********************************************************************************************************
 
+1. git log --oneline --graph --decorate --all (track commit so far)
+2. git checkout -- README.md (revert a file)
+3. git config --global alias.hist "log --oneline --graph --decorate --all" (create alias command)
+4. git config --global --list
+5. git hist (show logs for all commit)
+6. git hist -- README.md (show logs for file)
+7. git commit -am README.md (add + commit)
+8. git mv source-file-or-folder destination-file-or-folder (to rename or move)
+9. git rm file-or-name (remove from staging)
+10. mv source-file-or-folder destination-file-or-folder (to rename or move)
+11. git add -u (tell git for update)
+12. git add -A (tell git for all type of modifications - create, update, delete)
+13. git hist (created hist alias above)
+14. git diff 116cf73 HEAD (compare one commit to HEAD)
+15. git difftool (open diff tool)
+16. git diff source-branch destination-branch
+17. git branch -d branch-name (delete a branch)
+18. git mergetool
+19. git tag <tag-name> (create tag)
+20. git tag list (listing tags)
+21. git tag -d <tag-name> (delete tag name)
+22. git tag -a v1.0 -m "Release 1.0" (tag with information)
+23. git hist
+24. git show v1.0 (show tag details)
+25. git stash (stashing)
+26. git stash list (lists stash)
+27. git stash pop (apply stash)
+28. git hist (show log)
+29. git reset ce23j810 --soft (make HEAD to ce23j810, and keeps files in same area)
+30. git reset gh67jk89 --mixed (make HEAD to gh67jk89, and removes files from staging area)
+31. git reset kis89024 --hard (make HEAD to kis89024, and refresh everithing in Working directory and staging area)
+32. git remote -v (show remote repo)
+33. git remote rm origin
+
+
