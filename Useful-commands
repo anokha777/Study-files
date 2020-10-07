@@ -9,3 +9,9 @@ chmod 400 ec2-content/.ssh/id_rsa
 
 # UNPROTECTED PRIVATE KEY FILE issue
 sudo chmod 600 documents/nlp.pem 
+
+# run jar in background
+nohup java -jar emotionApi-0.0.1-SNAPSHOT.jar &
+
+# copy local to aws
+scp -i face-vision.pem /Users/braanokh/Documents/learning/face-poc/poc/visionapi-poc-291516-a23665c5b8fb.json ec2-user@34.239.168.244:/home/ec2-user
