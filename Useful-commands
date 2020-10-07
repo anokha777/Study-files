@@ -18,3 +18,7 @@ scp -i face-vision.pem /Users/braanokh/Documents/learning/face-poc/poc/visionapi
 
 # export env variable
 export GOOGLE_APP_CREDENTIALS=/Users/braanokh/Documents/learning/face-poc/poc/visionapi-poc-291516-a23665c5b8fb.json
+
+# kill process
+fuser 8080/tcp -> will print PID of process bound on that port.
+fuser -k 8080/tcp -> will kill that process. Works on Linux only.
