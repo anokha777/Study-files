@@ -15,3 +15,6 @@ nohup java -jar emotionApi-0.0.1-SNAPSHOT.jar &
 
 # copy local to aws
 scp -i face-vision.pem /Users/braanokh/Documents/learning/face-poc/poc/visionapi-poc-291516-a23665c5b8fb.json ec2-user@34.239.168.244:/home/ec2-user
+
+# export env variable
+export GOOGLE_APP_CREDENTIALS=/Users/braanokh/Documents/learning/face-poc/poc/visionapi-poc-291516-a23665c5b8fb.json
