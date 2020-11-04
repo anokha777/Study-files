@@ -1,0 +1,48 @@
+####################### .zshrc file content #######################
+export ZSH="/Users/braanokh/.oh-my-zsh"
+
+ZSH_THEME="robbyrussell"
+
+plugins=(
+  git
+  bundler
+  dotenv
+  osx
+  rake
+  zsh-autosuggestions
+  last-working-dir
+  web-search
+  brew
+  extract
+  history
+  sudo
+  yarn
+)
+
+source $ZSH/oh-my-zsh.sh
+source /Users/braanokh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+########################################################################
+
+1. cd - no need to type cd
+2. cmd + d -> split vertically
+3. shift + cmd + d -> split horizontally
+4. git aliases
+function gc { git commit -m "$@"; }
+alias gcm="git checkout master";
+alias gs="git status";
+alias gpull="git pull";
+alias gf="git fetch";
+alias gfa="git fetch --all";
+alias gf="git fetch origin";
+alias gpush="git push";
+alias gd="git diff";
+alias ga="git add .";
+alias gb="git branch";
+alias gbr="git branch remote"
+alias gfr="git remote update"
+alias gbn="git checkout -B "
+alias grf="git reflog";
+alias grh="git reset HEAD~" # last commit
+alias gac="git add . && git commit -a -m "
+alias gsu="git gpush --set-upstream origin "
