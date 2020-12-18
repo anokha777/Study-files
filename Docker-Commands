@@ -191,4 +191,8 @@ sudo chkconfig docker on
 32. git remote -v (show remote repo)
 33. git remote rm origin
 
+*************delete dummy images*********
+docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
+*****************************************
+
 
