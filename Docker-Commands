@@ -192,7 +192,9 @@ sudo chkconfig docker on
 33. git remote rm origin
 
 *************delete dummy images*********
-docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
+1. docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
+2. docker system prune -a
+3. docker system prune
 *****************************************
 
 
