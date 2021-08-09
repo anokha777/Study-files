@@ -197,4 +197,9 @@ sudo chkconfig docker on
 3. docker system prune
 *****************************************
 
+****************install docker on ec2******************
+1. yum install docker 
+2. systemctl start docker
+*******************************************************
+
 
