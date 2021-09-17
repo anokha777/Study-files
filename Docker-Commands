@@ -191,6 +191,12 @@ sudo chkconfig docker on
 32. git remote -v (show remote repo)
 33. git remote rm origin
 
+****************revert merged PR********************
+34. git revert -m 1 <commit_id>
+****************************************************
+
+
+
 *************delete dummy images*********
 1. docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
 2. docker system prune -a
