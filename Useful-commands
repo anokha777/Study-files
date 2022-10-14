@@ -24,3 +24,6 @@ export GOOGLE_APP_CREDENTIALS=/Users/braanokh/Documents/learning/face-poc/poc/vi
 # kill process
 fuser 8080/tcp -> will print PID of process bound on that port.
 fuser -k 8080/tcp -> will kill that process. Works on Linux only.
+
+# run command with detailed warnings and error printed
+npx cross-env NODE_OPTIONS="--trace-warnings" grunt brand:nissan
