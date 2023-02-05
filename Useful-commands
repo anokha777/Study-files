@@ -28,3 +28,7 @@ fuser -k 8080/tcp -> will kill that process. Works on Linux only.
 
 # run command with detailed warnings and error printed
 npx cross-env NODE_OPTIONS="--trace-warnings" grunt brand:nissan
+
+# kill process on ubuntu port
+sudo kill -9 `sudo lsof -t -i:9001`
+
