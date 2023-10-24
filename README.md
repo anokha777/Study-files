@@ -15,3 +15,5 @@ Part 3: https://youtu.be/4QrQlKtluK8?si=i6QQYRB29F-7PhXT <br />
 $ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash <br />
 $ nvm install 18.18.2 <br />
 
+**5. Disable UFW Ubuntu externally for AWS EC2** <br /> 
+https://serverfault.com/questions/736815/how-to-disable-ufw-ubuntu-externally-for-aws-ec2 <br />
