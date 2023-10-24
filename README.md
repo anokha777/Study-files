@@ -7,6 +7,7 @@ https://www.youtube.com/watch?v=Nxw2j1-srVc <br />
 https://github.com/safak/youtube/tree/mern-deployment
 
 **3. Install MySql 8 on Ubuntu 22.04 | EC2** <br />
-Part 1: https://youtu.be/qi50-qn8u3c?si=4RBMU81B4I7KgTT5 <br />
-Part 2: https://youtu.be/4QrQlKtluK8?si=i6QQYRB29F-7PhXT
+Part 1: https://youtu.be/9Gxt8iklOio?si=L_6-pjxOK8KY46P- <br />
+Part 2: https://youtu.be/qi50-qn8u3c?si=4RBMU81B4I7KgTT5 <br />
+Part 3: https://youtu.be/4QrQlKtluK8?si=i6QQYRB29F-7PhXT <br />
 
