@@ -32,3 +32,5 @@ npx cross-env NODE_OPTIONS="--trace-warnings" grunt brand:nissan
 # kill process on ubuntu port
 sudo kill -9 `sudo lsof -t -i:9001`
 
+# cherry pick 
+git cherry-pick -n e5ea623a124 bd0c16092db 
