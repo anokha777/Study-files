@@ -201,6 +201,7 @@ sudo chkconfig docker on
 1. docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
 2. docker system prune -a
 3. docker system prune
+4. docker history --no-trunc <Image ID> -- to know docker layer size
 *****************************************
 
 ****************install docker on ec2******************
