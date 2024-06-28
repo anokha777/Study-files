@@ -195,8 +195,6 @@ sudo chkconfig docker on
 34. git revert -m 1 <commit_id>
 ****************************************************
 
-
-
 *************delete dummy images*********
 1. docker images | grep none| tr -s ' ' | cut -d ' ' -f 3 | xargs -I {} docker rmi -f {}
 2. docker system prune -a
@@ -207,6 +205,7 @@ sudo chkconfig docker on
 ****************install docker on ec2******************
 1. yum install docker 
 2. systemctl start docker
+3. du -sh <folder-name> -- get folder size
 *******************************************************
 
 
