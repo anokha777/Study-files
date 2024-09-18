@@ -34,3 +34,9 @@ sudo kill -9 `sudo lsof -t -i:9001`
 
 # cherry pick 
 git cherry-pick -n e5ea623a124 bd0c16092db 
+
+# git- after rename branch in github.com, run below in your local, If you have a local clone.
+git branch -m master main
+git fetch origin
+git branch -u origin/main main
+git remote set-head origin -a
