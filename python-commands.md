@@ -1,7 +1,11 @@
 $ py --list
+
 $ py --list-paths
+
 $ py -m venv .test (creates python virtual env with base python version)
+
 $ .\.test\Script\activate (activates python virtual env)
+
 $ deactivate (deactivates virtual env)
 $ rmdir /q /s .test (deletes directory .test q = quitly, s = recursively)
 $ py -3.8 --version (refers the python version 3.8)
