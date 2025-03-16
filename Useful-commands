@@ -44,3 +44,7 @@ git remote set-head origin -a
 # to see nvidia grafics card info
 nvidia-smi
 
+# to see the disk space in ubuntu
+df -h --total
+
+
